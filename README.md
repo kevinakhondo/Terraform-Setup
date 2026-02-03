@@ -56,6 +56,6 @@ _cd module-02-iam-terraform_
 
 provider "aws" {
   region = "us-east-1"
-}```
+}
 
 
