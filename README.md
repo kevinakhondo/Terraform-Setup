@@ -61,3 +61,11 @@ provider "aws" {
 ```
 
 This tells Terraform: Which providers to use and Which AWS region.
+
+## Initialize Terraform
+Back in the terminal, while in the folder, run
+
+```
+terraform init
+```
+This: Downloads AWS provider and Prepares the working directory
