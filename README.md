@@ -19,9 +19,9 @@ Then, attach a policy AdministratorAccess. This is for learning purposes. once d
 -   Configure AWS Credentials locally on your machine.
 
 On your terminal, run _aws configure_ and enter 
-
+_______________________________________
 |AWS Access Key ID:     |<from IAM>   |
 |AWS Secret Access Key: |<from IAM>   | 
 |Default region:        | us-east-1   |
 |Default output:        | json        |
-
+______________________________________
