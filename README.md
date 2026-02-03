@@ -31,7 +31,9 @@ You should see your account ID and user name.
 ## Setting Up VS Code for Terraform
 - Under VS Extension, install the HashiCorp Terraform.
 - Next, create folder where everything will be stored.
-  _mkdir aws-data-engineering_
+
+
+_mkdir aws-data-engineering_
   
 _cd aws-data-engineering_
 
