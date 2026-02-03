@@ -14,4 +14,14 @@ If not, follow this guide to install it https://developer.hashicorp.com/terrafor
 <img width="1680" height="607" alt="image" src="https://github.com/user-attachments/assets/fe1bedf9-ec73-4299-9995-131ff2fd6994" />
 
 
-Then, attach a policy AdministratorAccess. This iss for learning purposes.
+Then, attach a policy AdministratorAccess. This is for learning purposes. once data, you need to generate an access and secret key. Save it.
+
+-   Configure AWS Credentials locally on your machine.
+
+On your terminal, run _aws configure_ and enter 
+
+AWS Access Key ID:     <from IAM>
+AWS Secret Access Key: <from IAM>
+Default region:       us-east-1
+Default output:       json
+
