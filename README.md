@@ -25,3 +25,5 @@ On your terminal, run _aws configure_ and enter
 - Default region:         us-east-1   
 - Default output:         json        
 
+After correctly entering the above info, confirm if it's correct by running _aws sts get-caller-identity_ on your terminal. 
+You should see your account ID and user name.
