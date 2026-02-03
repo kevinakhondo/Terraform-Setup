@@ -59,6 +59,7 @@ provider "aws" {
   region = "us-east-1"
 }
 ```
+<img width="1680" height="426" alt="image" src="https://github.com/user-attachments/assets/cc776eb1-5397-4d87-9120-467db10a7a34" />
 
 This tells Terraform: Which providers to use and Which AWS region.
 
@@ -69,3 +70,11 @@ Back in the terminal, while in the folder, run
 terraform init
 ```
 This: Downloads AWS provider and Prepares the working directory
+
+Further, on the vs studio, add the following folders
+
+```
+variables.tf
+outputs.tf
+```
+
