@@ -41,6 +41,21 @@ _mkdir module-02-iam-terraform_
 
 _cd module-02-iam-terraform_
 
+- In the VS Studio, open the created folder and create the _main.tf_ file. Enter the code:
 
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
 
 
