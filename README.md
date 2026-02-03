@@ -21,7 +21,10 @@ Then, attach a policy AdministratorAccess. This is for learning purposes. once d
 On your terminal, run _aws configure_ and enter 
 _______________________________________
 |AWS Access Key ID:     |<from IAM>   |
+________________________|_____________|
 |AWS Secret Access Key: |<from IAM>   | 
+_______________________________________
 |Default region:        | us-east-1   |
+_______________________________________
 |Default output:        | json        |
 ______________________________________
