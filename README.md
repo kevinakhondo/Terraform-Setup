@@ -187,10 +187,97 @@ resource "aws_iam_group_policy_attachment" "readonly" {
 
 ```
 
+#### Step 6: Create IAM Role for EC2
+Roles are asssumed by AWS.
 
+In the _main.tf_, add the following
 
+```
+resource "aws_iam_role" "ec2_data_role" {
+  name = "ec2-data-role"
 
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+      Principal = {
+        Service = "ec2.amazonaws.com"
+      }
+      Action = "sts:AssumeRole"
+    }]
+  })
+}
 
+```
 
+#### Step 7: Define Variables
+In this, we define the S3 bucket. In your _variables.tf_ , add the following:
+
+```
+variable "raw_bucket_name" {
+  description = "Raw S3 bucket name"
+  type        = string
+}
+
+```
+
+Also, in your _terraform.tfvars_, add the following:
+
+```
+raw_bucket_name = "data-platform-raw-kevins"
+
+```
+That defines the actual name of the bucket.
+
+#### Step 8: Define Custom IAM Policy for S3 Access
+We use least previlege where :
+- only one bucket is accessed.
+- Provide only required actions.
+- There is no wildcard access.
+
+In _main.tf_, add the following
+
+```
+resource "aws_iam_policy" "s3_raw_access" {
+  name = "s3-raw-access"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect = "Allow"
+
+      Action = [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:ListBucket"
+      ]
+
+      Resource = [
+        "arn:aws:s3:::${var.raw_bucket_name}",
+        "arn:aws:s3:::${var.raw_bucket_name}/*"
+      ]
+    }]
+  })
+}
+
+```
+
+#### Step 9: Attach Policy to the Role
+
+Add the following
+
+```
+resource "aws_iam_role_policy_attachment" "ec2_s3_access" {
+  role       = aws_iam_role.ec2_data_role.name
+  policy_arn = aws_iam_policy.s3_raw_access.arn
+}
+
+```
+The effect of that is:
+
+```
+EC2 → IAM Role → S3 Raw Bucket
+
+```
 
 
