@@ -125,3 +125,72 @@ provider "aws" {
 
 ```
 From the above line, Terraform creates everything in _us-east-1_.
+
+#### Step 2: Creating IAM User
+
+Iam User is the human identity. Still in _main.tf_, add the following line:
+
+```
+resource "aws_iam_user" "data_engineer" {
+  name = "kevin.data.engineer"
+}
+
+```
+These are IAM users that represent humans and are used for AWS Console / CLI access.
+
+#### Step 3: Creating IAM Groups
+These are created because:
+- Easier permission management
+- Industry best practice
+- Users inherit group permissions
+
+Still in _main.tf_, add the following:
+
+```
+resource "aws_iam_group" "data_engineers" {
+  name = "data-engineers"
+}
+
+```
+
+#### Step 4: Add A User to A group
+
+The created user data_engineer with the name kevin.data.engineer is added to the group data_engineers.
+Still on _main.tf_, add the following:
+
+```
+resource "aws_iam_group_membership" "data_engineer_membership" {
+  name = "data-engineers-membership"
+
+  users = [
+    aws_iam_user.data_engineer.name
+  ]
+
+  group = aws_iam_group.data_engineers.name
+}
+
+```
+#### Step 5: Attach Read Only Policy to Created Group
+
+The reason for attaching read only is:
+- Engineers can inspect infra
+- Prevents accidental destruction
+- Very common in production
+
+In the _main.tf_, add the following
+
+```
+resource "aws_iam_group_policy_attachment" "readonly" {
+  group      = aws_iam_group.data_engineers.name
+  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+}
+
+```
+
+
+
+
+
+
+
+
