@@ -280,4 +280,18 @@ EC2 → IAM Role → S3 Raw Bucket
 
 ```
 
+#### Step 10: Run your terraform
 
+Use the following in that order:
+
+```
+terraform init
+terraform plan
+terraform apply
+
+```
+You can also validate using:
+
+```
+terraform validate
+```
