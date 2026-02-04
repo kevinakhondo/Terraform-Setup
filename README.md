@@ -92,3 +92,36 @@ Service access:
 EC2 ──▶ IAM Role ──▶ Custom S3 Policy
 
 ```
+
+#### Step 1: Setting Up terraform and provider
+
+In your _main.tf_ on the VS studio, copy and paste the following
+
+```
+terraform {
+  required_version = ">= 1.5.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+```
+
+The above lines:
+- Locks Terraform version
+- Locks AWS provider version
+- Makes your repo reproducible
+
+The next part is creating provider configuration
+
+```
+provider "aws" {
+  region = "us-east-1"
+}
+
+```
+From the above line, Terraform creates everything in _us-east-1_.
