@@ -80,4 +80,15 @@ terraform.tfvars
 outputs.tf
 
 ```
+### Hands-On
 
+In this, we will build the following using terraform
+
+```
+Human access:
+IAM User ──▶ IAM Group ──▶ ReadOnly Policy
+
+Service access:
+EC2 ──▶ IAM Role ──▶ Custom S3 Policy
+
+```
