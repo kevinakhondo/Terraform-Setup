@@ -74,7 +74,10 @@ This: Downloads AWS provider and Prepares the working directory
 Further, on the vs studio, add the following folders
 
 ```
+main.tf
 variables.tf
+terraform.tfvars
 outputs.tf
+
 ```
 
